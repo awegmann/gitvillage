@@ -49,12 +49,12 @@ public class VillageTest {
 
       GitVillage gitVillage = GitVillage.createVillage(gitObject);
       gitVillage.hack().setName("ahack").call();
-      assertEquals(gitObject.getRepository().getBranch(),"ahack");
+      assertEquals("ahack", gitObject.getRepository().getBranch());
 
-      gitObject.branchList().call().forEach(b -> System.out.println(b.getName()));
       List<String> branches = gitObject.branchList().call().stream().map(n -> n.getName()).collect(Collectors.toList());
       assertThat(branches, hasItem("master"));
-
+      assertThat(branches, hasItem("ahack"));
+      
     } catch (GitAPIException e) {
       logger.error("",e);
     } catch (IOException e) {
