@@ -16,4 +16,9 @@ public class RepoCommand extends AbstractGitVillageCommand {
   public GitVillage call() {
     return gitVillage;
   }
+
+  @Override
+  protected void checkPreconditions() {
+
+  }
 }

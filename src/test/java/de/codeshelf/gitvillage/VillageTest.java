@@ -39,28 +39,4 @@ public class VillageTest {
       logger.error("",e);
     }
   }
-
-
-  @Test
-  public void testStartHack() {
-    try (TemporaryTestRepository testRepository = new TemporaryTestRepository("testrepo")) {
-      Git gitObject = testRepository.getGitObject();
-      testRepository.createInitialCommitWithDummyFile();
-
-      GitVillage gitVillage = GitVillage.createVillage(gitObject);
-      gitVillage.hack().setName("ahack").call();
-      assertEquals("ahack", gitObject.getRepository().getBranch());
-
-      List<String> branches = gitObject.branchList().call().stream().map(n -> n.getName()).collect(Collectors.toList());
-      assertThat(branches, hasItem("master"));
-      assertThat(branches, hasItem("ahack"));
-      
-    } catch (GitAPIException e) {
-      logger.error("",e);
-    } catch (IOException e) {
-      logger.error("",e);
-    } catch (Exception e) {
-      logger.error("",e);
-    }
-  }
 }

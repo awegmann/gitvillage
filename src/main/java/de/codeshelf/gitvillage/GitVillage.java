@@ -16,6 +16,10 @@ import java.io.IOException;
  */
 public class GitVillage {
 
+  public Git getGitRepo() {
+    return gitRepo;
+  }
+
   private Git gitRepo;
 
   private GitVillage(File gitRepoDir) throws IOException {
@@ -26,39 +30,39 @@ public class GitVillage {
     this.gitRepo = gitRepo;
   }
 
-  AppendCommand append() {
+  public AppendCommand append() {
     return new AppendCommand(this);
   }
 
-  KillCommand kill() {
+  public KillCommand kill() {
     return new KillCommand(this);
   }
 
-  PrependCommand prepend() {
+  public PrependCommand prepend() {
     return new PrependCommand(this);
   }
 
-  PruneBranchesCommand pruneBranches() {
+  public PruneBranchesCommand pruneBranches() {
     return new PruneBranchesCommand(this);
   }
 
-  RenameBranchCommand renameBranch() {
+  public RenameBranchCommand renameBranch() {
     return new RenameBranchCommand(this);
   }
 
-  HackCommand hack() {
+  public HackCommand hack() {
     return new HackCommand(this);
   }
 
-  NewPullRequestCommand newPullRequest() {
+  public NewPullRequestCommand newPullRequest() {
     return new NewPullRequestCommand(this);
   }
 
-  ShipCommand ship() {
+  public ShipCommand ship() {
     return new ShipCommand(this);
   }
 
-  SyncCommand sync() {
+  public SyncCommand sync() {
     return new SyncCommand(this);
   }
 
